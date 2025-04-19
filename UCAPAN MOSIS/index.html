@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>😎PLIS REK BUKAEN🤩</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .container.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: bounce 1.5s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .button {
+      background: #f76c6c;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 15px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .button:hover {
+      background: #ff4c4c;
+      transform: scale(1.05);
+    }
+    .hidden {
+      display: none;
+    }
+    canvas {
+      margin: 1rem auto;
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background: #fff;
+      border-radius: 10px;
+    }
+    .grand-final {
+      font-size: 2rem;
+      color: #ff0080;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin-top: 1rem;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .toast {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 999;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+    #getReady {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      max-width: 90%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+ <audio autoplay loop>
+  <source src="laskar-pelangi.mp3" type="audio/mp3" />
+</audio>
+
+
+  <div class="toast" id="toast"></div>
+
+  <!-- PAGE 1 -->
+  <div class="container active" id="page1">
+    <h1>🎮 Whack-a-Ball!</h1>
+    <p>Klik hanya bola <strong>pink</strong> ya! (3 kali benar untuk lanjut)</p>
+    <canvas id="startCanvas" width="300" height="300"></canvas>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="container hidden" id="page2">
+    <h1>Untuk temen-temen semua.</h1>
+    <p>Terima kasih banyak banyak banyak karena udah mbantu event outing class ini.</p>
+    <p>tanpa kalian aku ga mbayangin bakal se chaos apa event kali ini. berkat kalian event ini dapat berjalan mulus.</p>
+    <p>yaa walau ga 101% berjalan sesuai yang kita inginkan, seenggaknya dapat sukses lah</p>
+    <p>aku sadar aku banyak kurangnya di event ini, ga se... ga banyak kurangnya tapi banyakk bangettt pastinya</p>
+    <p>Aku minta maaf akan hal itu. ya karena balik lagi aku baru pertama kali jadi ketupel ya gitulah pasti kurang buanyakkk banget.</p>
+    <p>sisi positif yang dapat aku ambil ya, pastinya pengalaman, evaluasi. karena aku jadi lebih tau... "ohh jadi gini","ohh lek misal ngunu ngene yo"</p>
+    <p>banyak banget pelajaran yang aku ambil. terutama masalah komunikasi sih. aku sadar banget di kita itu kurang poll</p>
+    <p>soal e apa ya. kita dari awal aja udah ga dapet SK guru jadi pastinya bingung kan kita mau ngerapat ke siapa dan dimana.</p>
+    <p>belum lagi misskom sama guru guru yang beda pendapat. dari guru ini maunya ini, tapi dari guru itu maunya gitu</p>
+    <p>aku mau minta maaf juga kalau semisal ada info yang aku keep sendiri soalnya ya kembali lagi...</p>
+    <p>info tadi tuh kayak masih abu abu kalau ga infonya mau aku beritahu tapi keburu ga jadi</p>
+    <p>dan aku mau minta maaf juga kalau ada beberapa hal aku putusin sendiri, soalnya kadang guru ada nelfon dadakan bahkan tengah malem dan butuh keputusan saat itu juga 😵</p>
+    <p>dan yang terakhir aku minta maaf banget kalau aku kadang nge-gupuh-in kalian, ngasih pj dadakan ehe. soale ya urip iki penuh dengan twist. 🙏</p>
+    <p>moga dari event ini kita bisa lebih lebih dan lebih lagi dalam njalanin suatu event. Inget kata pak Shyndu yesss.</p>
+    <p>"TETEP SEMANGATT, PASTI BISA.</p>
+    <button class="button" onclick="showGame2()">Mau lanjut? Ayo game lagi!</button>
+  </div>
+
+  <!-- PAGE 3 - FLAPPY -->
+  <div class="container hidden" id="page3" style="position: relative;">
+    <h1>🐤 Flappy Kamu!</h1>
+    <p>Tekan untuk terbang! Hindari pipa ya!</p>
+    <canvas id="gameCanvas3" width="300" height="400"></canvas>
+    <div id="getReady">
+      <p style="font-size:1.2rem; margin:0 0 1rem;">🕊️ Siap main?</p>
+      <button class="button" onclick="startGame()">Mulai!</button>
+    </div>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="container hidden" id="page4">
+    <h1 class="grand-final">🎉 YEAYY, kalian udah nyampe akhir nih. 🎉</h1>
+    <p>makasihhh yeahh udah baca sampai selesai</p>
+    <p>makasih udah ngeluangin waktu bentar buat hal ginian ehe.</p>
+    <p>moga pesanku ini nyampe ya.</p>
+    <h2 class="grand-final">Stay awesome, see you soon guyss👋</h2>
+    <button class="button" onclick="location.reload()">Main Lagi!</button>
+  </div>
+
+  <canvas class="hidden" id="gameCanvas2" width="400" height="400"></canvas>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+    const page4 = document.getElementById('page4');
+    const canvas2 = document.getElementById('gameCanvas2');
+    const canvas3 = document.getElementById('gameCanvas3');
+    const ctx3 = canvas3.getContext('2d');
+
+    function showPage(page) {
+      document.querySelectorAll('.container').forEach(p => p.classList.add('hidden'));
+      page.classList.remove('hidden');
+      setTimeout(() => page.classList.add('active'), 10);
+    }
+
+    function triggerConfetti() {
+      confetti({ particleCount: 150, spread: 90, origin: { y: 0.4 } });
+    }
+
+    // Game 1
+    const startCanvas = document.getElementById('startCanvas');
+    const startCtx = startCanvas.getContext('2d');
+    let game1Balls = [];
+    let correctHits = 0;
+
+    function drawBalls() {
+      game1Balls = [];
+      startCtx.clearRect(0, 0, 300, 300);
+      for (let i = 0; i < 5; i++) {
+        const x = Math.random() * 260 + 20;
+        const y = Math.random() * 260 + 20;
+        const r = 20;
+        const isPink = Math.random() < 0.4;
+        const color = isPink ? 'hotpink' : 'lightblue';
+        game1Balls.push({ x, y, r, color, isPink });
+        startCtx.beginPath();
+        startCtx.arc(x, y, r, 0, Math.PI * 2);
+        startCtx.fillStyle = color;
+        startCtx.fill();
+        startCtx.closePath();
+      }
+    }
+
+    drawBalls();
+
+    startCanvas.addEventListener('click', function(e) {
+      let rect = startCanvas.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
+      for (let ball of game1Balls) {
+        let dx = x - ball.x;
+        let dy = y - ball.y;
+        if (Math.sqrt(dx * dx + dy * dy) < ball.r) {
+          if (ball.isPink) {
+            correctHits++;
+            showToast(`Yay! Benar ${correctHits}/3`);
+            if (correctHits >= 3) showPage(page2);
+            else drawBalls();
+          } else {
+            correctHits = 0;
+            showToast("Oops! Itu bukan bola pink!");
+            drawBalls();
+          }
+          break;
+        }
+      }
+    });
+
+    // Game 2
+    const ctx2 = canvas2.getContext('2d');
+    let ballX = 200, ballY = 200, r = 30, hits = 0;
+
+    function showGame2() {
+      page2.classList.remove('active');
+      setTimeout(() => {
+        page2.classList.add('hidden');
+        canvas2.classList.remove('hidden');
+        drawBall2();
+        canvas2.addEventListener('mousemove', moveBall2);
+      }, 500);
+    }
+
+    function drawBall2() {
+      ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+      ctx2.beginPath();
+      ctx2.arc(ballX, ballY, r, 0, Math.PI * 2);
+      ctx2.fillStyle = '#00adb5';
+      ctx2.fill();
+      ctx2.closePath();
+    }
+
+    function moveBall2(e) {
+      let rect = canvas2.getBoundingClientRect();
+      let mouseX = e.clientX - rect.left;
+      let mouseY = e.clientY - rect.top;
+      if (Math.abs(mouseX - ballX) < r && Math.abs(mouseY - ballY) < r) {
+        ballX = Math.random() * (canvas2.width - 2 * r) + r;
+        ballY = Math.random() * (canvas2.height - 2 * r) + r;
+        r = Math.max(10, r - 2);
+        drawBall2();
+        hits++;
+        showToast(`Dapet! ${hits}/10`);
+        if (hits > 9) {
+          canvas2.classList.add('hidden');
+          showPage(page3);
+          startFlappyBird();
+        }
+      }
+    }
+
+    // Game 3 - Flappy Bird
+    let bird = { x: 50, y: 150, vy: 0 };
+    let pipes = [];
+    let pipeGap = 100;
+    let flappyInterval;
+
+    function startFlappyBird() {
+      bird = { x: 50, y: 150, vy: 0 };
+      pipes = [];
+      for (let i = 0; i < 3; i++) {
+        let x = 300 + i * 200;
+        let top = Math.random() * 200 + 20;
+        pipes.push({ x, top });
+      }
+      document.getElementById("getReady").style.display = "block";
+    }
+
+    function startGame() {
+      document.getElementById("getReady").style.display = "none";
+      canvas3.addEventListener('mousedown', flap);
+      canvas3.addEventListener('touchstart', flap);
+      flappyInterval = setInterval(updateFlappy, 20);
+    }
+
+    function flap() {
+      bird.vy = -6;
+    }
+
+    function updateFlappy() {
+      ctx3.clearRect(0, 0, canvas3.width, canvas3.height);
+      bird.vy += 0.4;
+      bird.y += bird.vy;
+
+      // Draw pipes
+      pipes.forEach(p => {
+        p.x -= 2;
+        ctx3.fillStyle = 'green';
+        ctx3.fillRect(p.x, 0, 50, p.top);
+        ctx3.fillRect(p.x, p.top + pipeGap, 50, canvas3.height - p.top - pipeGap);
+      });
+
+      // Add new pipe
+      if (pipes[0].x < -50) {
+        pipes.shift();
+        let newTop = Math.random() * 200 + 20;
+        pipes.push({ x: canvas3.width, top: newTop });
+      }
+
+      // Draw bird
+      ctx3.fillStyle = 'orange';
+      ctx3.fillRect(bird.x, bird.y, 20, 20);
+
+      // Check collision
+      for (let p of pipes) {
+        if (
+          bird.x + 20 > p.x && bird.x < p.x + 50 &&
+          (bird.y < p.top || bird.y + 20 > p.top + pipeGap)
+        ) {
+          clearInterval(flappyInterval);
+          showPage(page4);
+          triggerConfetti();
+        }
+      }
+
+      if (bird.y > canvas3.height || bird.y < 0) {
+        clearInterval(flappyInterval);
+        showPage(page4);
+        triggerConfetti();
+      }
+    }
+  </script>
+</body>
+</html>
